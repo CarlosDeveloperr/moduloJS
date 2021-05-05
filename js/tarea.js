@@ -120,3 +120,5 @@ console.log(`Tu nombre termina con ${ultimaLetra}`)
 let numeroVeces = window.prompt("Cuantas veces quieres duplicar la parada")
 let nombre4 = window.prompt("Dame un nombre")
 
+alert(nombre4.repeat(numeroVeces))
+

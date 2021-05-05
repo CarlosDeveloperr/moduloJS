@@ -1,91 +1,122 @@
+// 1:
+// Pedir al usuario un numero entre 1 y 12
+// Imprimir en consola el numero de días que corresponden a ese mes y su nombre
+// p.ej.
+// --> El mes 5 (Mayo) tiene 31 días
+let mes=parseInt(window.prompt('Dame el numero de mes que quieres saber el numero de dias que tiene...'))
+switch (mes) {
+	case 1:
+	console.log('El mes 1 (Enero) tiene 31 días')
+	break
+	case 2:
+    console.log('El mes 2 (Febrero) tiene 28 días')
+	break
+	case 3:
+        console.log('El mes 3 (Marzo) tiene 31 días')
+	break
+	case 4:
+        console.log('El mes 4 (Abril) tiene 30 días')
+	break
+	case 5:
+        console.log('El mes 5 (Mayo) tiene 31 días')
+	break
+	case 6:
+        console.log('El mes 6 (Junio) tiene 30 días')
+	break
+    case 6:
+        console.log('El mes 7 (Julio) tiene 31 días')
+	break
+    case 8:
+        console.log('El mes 8 (Agosto) tiene 31 días')
+    break
+    case 9:
+        console.log('El mes 9 (Septiembre) tiene 30 días')
+    break
+    case 10:
+        console.log('El mes 10 (Octubre) tiene 31 días')
+    break
+    case 11:
+        console.log('El mes 11 (Noviembre) tiene 30 días')
+    break
+    case 12:
+        console.log('El mes 12 (Diciembre) tiene 31 días')
+    break
+	default:
+		console.log('Ese mes no existe')
+}
+
 /**
- * 1:
- * Pedir al usuario estos 3 datos
- * - Nombre
- * - Peso actual
- * Calcular el peso que tendria esa persona en la luna
- * Imprimirlo en consola
- * ** Opcional -> Crear una función **
- */
-
-// let nombre = window.prompt("Cual es tu nombre?")
-// let pesoActual = window.prompt("Cual es tu peso actual?")
-
-// console.log("tu nombre es: " +nombre+ " y tu peso es: "+pesoActual)
-
-//  let pesoLuna = (pesoActual/9.81)*1622
-
-//  console.log("El peso que tienes en la luna seria: "+pesoLuna)
-
- /**
  * 2:
- * Pedir al usuario la calificación de un examen ( 0 a 100)  por el prompt
- * Imprimir en consola las equivalencias en letra su calificación, es decir
- * -> si es mayor o igual a 90, imprimir "A"
- * -> si es mayor o igual a 80 y menor que 90 , imprimir "B"
- * -> si es mayor o igual a 70 y menor que 80 , imprimir "C"
- * -> si es mayor o igual a 60 y menor que 70 , imprimir "D"
- * -> si es mayor o igual a 50 y menor que 60 , imprimir "E"
- * -> si es menor 50 , imprimir "F"
+ * Pedir al usuario que indique como esta su día
+ * Opciones: Nublado, Soleado, Lluvioso, Nevado
+ * Si escribe alguna de ellas, colocar un mensaje 
+ * P.ej: soleado -> oh!, que buen clima para estar en la playa
+ * P.ej: nevado -> oh!, que buen clima para estar en casa
+ *  etc...
+ * Sino
+ * Pedir por prompt, Que describa que le gustaria hacer en su día
  */
-//   var calificación = parseInt(window.prompt("Cual fue tu calificacion en el examen ?"))
+let opinionUsuario = window.prompt('Como esta el clima en tu Region\n1. Nublado\n2. Soleado\n3. Lluvioso\n4. Nevado')
+switch(opinionUsuario){
+    case 1:
+    console.log('oh!, que buen clima para un maraton de series')
+    break
+    case 2:
+    console.log('oh!, que buen clima para estar en la playa')
+    break
+    case 3:
+    console.log('oh!, lluvia que hermoso !!')
+    break
+    case 4:
+    console.log('oh!, que buen clima para estar en casa')
+    break
+    default:
+        window.prompt("Describeme lo que te gustaria hacer en tu dia")
+}
 
-//     if(calificación>=90)
-//     console.log("Tu calificacion es 'A' ")
-//     else if(calificación>=80 && calificación<90)
-//     console.log("Tu calificacion es 'B'")
-//     else if(calificación>=70 && calificación<80)
-//     console.log("Tu calificacion es 'C'")
-//     else if(calificación>=60 && calificación<70)
-//     console.log("Tu calificacion es 'D'")
-//     else if(calificación>=50 && calificación<60)
-//     console.log("Tu calificacion es 'E'")
+/**
+ * 3:
+ * Pedir el nombre de una persona
+ * Verificar si el nombre termina con una vocal
+ * imprimir que `Tu nombre termina con ${vocal}`
+ * Sino
+ * imprimir que `Tu nombre termina con ${consonante}`
+ * -> Pedro
+ * -> `Tu nombre termina con o`
+ */
 
-    /* 5:
-    * Pedir al usuario el dia de la semana 
-    * p.ej. lunes, martes, ...
-    * Imprimir en consola el número del dia de la semana equivalente
-    * es decir:
-    * domingo -> 1, lunes -> 2, martes -> 3, etc...
-    */
-   
-    // let Dia = window.prompt("Que dia de la semana es?")
+let nombre = window.prompt("Dame un nombre")
+let ultimaLetra=nombre[nombre.length - 1].toLowerCase();
+if(ultimaLetra=='a' || ultimaLetra=='e' || ultimaLetra=='i' || ultimaLetra=='o' || ultimaLetra=='u')
+console.log(`Tu nombre termina con ${ultimaLetra}`)
+else
+{
+console.log(`Tu nombre termina con ${ultimaLetra}`)
+}
 
-    // if(Dia=='Lunes' || Dia=='lunes')
-    // console.log("El dia lunes es el numero 1 de la semana")
-    // else if(Dia=='Martes' || Dia=='martes')
-    // console.log("El dia martes es el numero 2 de la semana")
-    // else if(Dia=='Miercoles' || Dia=='miercoles')
-    // console.log("El dia miercoles es el numero 3 de la semana")
-    // else if(Dia=='Jueves'|| Dia=='jueves')
-    // console.log("El dia jueves es el numero 4 de la semana")
-    // else if(Dia=='Viernes'|| Dia=='viernes')
-    // console.log("El dia viernes es el numero 5 de la semana")
-    // else if(Dia=='Sabado' || Dia=='sabado')
-    // console.log("El dia sabado es el numero 6 de la semana")
-    // else if(Dia=='Domingo' || Dia=='domingo')
-    // console.log("El dia domingo es el numero 7 de la semana")
-    
-    /* 6:
-    * Pedir al usuario 2 numeros 
-    * Imprimir en consola cual es el menor de los 2
-    * Imprimir en consola cual es el mayor de los 2
-    */
 
-    var num = parseInt(window.prompt("Ingresa un numero "))
-    var num2 = parseInt(window.prompt("Ingresa otro numero "))
+/**
+ * 4:
+ * Pedir el nombre de una persona
+ * Imprimir el nombre de la persona al revés y en mayúsculas
+ * P.ej: juan
+ * -> NAUJ
+ */
+ const invertirCadena = cadena => cadena.split("").reverse().join("");
+ 
+ let cadena =  window.prompt("Dame un nombre");
+ console.log("Cadena:", invertirCadena(cadena));
 
-    if(num<num2)
-    {
-    mayor=num2
-    menor=num
-    console.log("El numero mayor es: " +mayor+" el numero menor es: "+menor)
-    }
-    else if(num>num2)
-    {
-    mayor=num
-    menor=num2
-    console.log("El numero mayor es: " +mayor+" el numero menor es: "+menor)
-    }
-    else if(num==num2)
-    console.log("Son iguales los numeros")
+/**
+ * Pedir una palabra por promt
+ * Pedir un número entre 1 y 10
+ * Duplicar esa cantidad de veces esa palabra e imprimir en consola
+ * P.ej: 
+ * "Kodemia"
+ * 4
+ * -> "Kodemia Kodemia Kodemia Kodemia"
+ */
+
+let numeroVeces = window.prompt("Cuantas veces quieres duplicar la parada")
+let nombre4 = window.prompt("Dame un nombre")
+

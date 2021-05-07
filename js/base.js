@@ -1,70 +1,65 @@
-console.log('Metodos de sting y ciclos')
-
-
-
 /**
- * Pedir al usuario usuario un numero entre 1 y 10
- * Imprimir la tabla de multiplicar de ese número
- * p.ej. 
- * 3 x 1 = 3
- * 3 x 2 = 6
- */
-// let numero= parseInt(window.prompt("Que numero deseas?"))
-// let i=1
-// console.log(`La tabla es del ${numero}\n`)
-// while(i<=10){
-//     let resultado=numero*i
-//    console.log(`${numero}*${i} = ${resultado}`);
-//    i++
-// }
-
-// for(let i=1;i<=10;i++){
-//     let resultado=numero*i
-//     console.log(`${numero}*${i}= ${resultado}`);
-// }
-
-
-/**
- * Pedir al usuario una oracion
- * Imprimir un string con todas las vocales
- * Imprimir un string con todas las consonantes
+ * For
+ * Escribir un programa de arroje la suma de los multiplos de 3, 5 o 7 que hay entre 1 y 100
  * 
  */
-//  let oracion=window.prompt("Dame una oracion")
-//  let vocales=""
-//  let consonantes=""
-// //  carlos
-// for(i=0;i<=oracion.length-1;i++){
-//     if(oracion[i]!==' ' || oracion[i]!==',' || oracion[i]!=='.'){
-//         if(oracion[i]=='a' || oracion[i]=='e'|| oracion[i]=='i' || oracion[i]=='o' || oracion[i]=='u' 
-//             || oracion[i]=='A' || oracion[i]=='E'|| oracion[i]=='I' || oracion[i]=='O' || oracion[i]=='U' )
-//         {
-//             vocales+=oracion[i]
-            
-//         }
-//         else{
-//             consonantes+=oracion[i]
-//         }
-//     }
-//  }
-//  console.log(vocales)
-//  console.log(consonantes)
 
-/**
- * Pedir el usuario un numero entre 10 y 100
- * Imprimir todos los numeros pares que existen entre 1 y ese numero
+//  var datos=[3,5,7];
+//  var maximo =100;
+//  var aux=[];
+ 
+ 
+//   for (var i =0; i<maximo; i++) 
+//   {
+//       for (var j = 0; j < datos.length; j++) 
+//       {
+//           if (i%datos[j]==0)
+//           {
+//               aux.push(i);
+//               document.write(i+", ");
+//           }
+//       }
+//   }
+
+//    var acum =0;
+//   for ( i = 0; i<aux.length; i++) 
+//   {
+//       acum= acum+aux[i];
+//   }
+//   document.write("La suma de los numeros multiplos de 3,5 y 7 es: "+acum);
+
+ /**
+  * While
+  * Escribir un programa que le pida al usuario un numero
+  * que imprima en consola el numero dado si es positivo
+  * si el numero es negativo, salir del ciclo
+  * 
+  */
+//  let num=parseInt(window.prompt("Dame un numero , por favor"))
+//   while(num>0){
+//          console.log(`Tu numero es: ${num}`)
+//         num=parseInt(window.prompt("Dame otro numero , por favor"))
+//   }
+
+ /**
+ * Dado los siguientes 2 strings
+ * 'smtp'
+ * 'aeiou'
+ * Imprimir en consola las siguientes combinaciones
+ * -> sa, se, si, so , su 
+ * -> ma, me, mi, mo , mu 
+ * -> ta, te, ti, to , tu 
+ * -> pa, pe, pi, po , pu
  */
 
-let num=parseInt(window.prompt("Dame el numero que quieres saber sus pares entre 10-100"))
-let i=1
-while(i<=num){
-    if(i%2==0){
-    console.log(` El numero ${i} es par`)
-             }
-    i++
-}
-// for(i=1;i<=num;i++){
-//     if(i%2==0){
-//         console.log(` El numero ${i} es par`)
-//     }
-// }
+ let primerAray='smtp'
+ let segundoArray='aeiou'
+ let concatenacion=''
+ console.log("Tu combinaciones son:\n")
+ for(let i=0;i<=segundoArray.length;i++){
+     for(let j=0;j<=primerAray.length;j++){
+        concatenacion+=primerAray.substr(i,1) + segundoArray.substr(j,1) + ','
+     }
+     console.log(concatenacion)
+     concatenacion=' '
+ }

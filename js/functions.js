@@ -97,59 +97,45 @@
   // }
 
 
-  /*funciones como expresiones o variables*/
-  const consultarDinero= function (Consulta){
-    // console.log("El dinero que tienes en la cuenta en este momento es: "+Consulta)
-    console.log(`El dinero que tienes en la cuenta en este momento es :${Consulta}`)
-  }
+//   /*funciones como expresiones o variables*/
+//   const consultarDinero= function (Consulta){
+//     // console.log("El dinero que tienes en la cuenta en este momento es: "+Consulta)
+//     console.log(`El dinero que tienes en la cuenta en este momento es :${Consulta}`)
+//   }
 
- const retirarDinero = function (dineroActual,dineroRetiro){
-    if(dineroRetiro>0){
-      if(dineroActual>= dineroRetiro)
-      {
-              let valor=dineroEnCuenta-dineroRetiro
-              return valor
-      }else{
-        console.log("no tienes dinero suficiente")
-      }
-    }else{
-      console.log("Numero mayor que 0 por favor")
-    }
+//  const retirarDinero = function (dineroActual,dineroRetiro){
+//     if(dineroRetiro>0){
+//       if(dineroActual>= dineroRetiro)
+//       {
+//               let valor=dineroEnCuenta-dineroRetiro
+//               return valor
+//       }else{
+//         console.log("no tienes dinero suficiente")
+//       }
+//     }else{
+//       console.log("Numero mayor que 0 por favor")
+//     }
    
-  }
+//   }
 
- const depositarDinero = function (dineroActual,dineroDepositar){
-    if(dineroDepositar>0)
-    {
-       valor=dineroActual+dineroDepositar
-      return valor
-    }
+//  const depositarDinero = function (dineroActual,dineroDepositar){
+//     if(dineroDepositar>0)
+//     {
+//        valor=dineroActual+dineroDepositar
+//       return valor
+//     }
    
-  }
+//   }
 
-   const transferencia =function (dineroActual,cantidad,cuenta="1234"){
-      if(cantidad > 0){
-          if(cuenta===1234){
-        valor=dineroActual+cantidad
-        return valor
-      }else{
-        console.log("no se puede hacer la transferencia")
-      }
-   }
-  }
+//    const transferencia =function (dineroActual,cantidad,cuenta="1234"){
+//       if(cantidad > 0){
+//           if(cuenta===1234){
+//         valor=dineroActual+cantidad
+//         return valor
+//       }else{
+//         console.log("no se puede hacer la transferencia")
+//       }
+//    }
+//   }
 
 
-
-let dineroEnCuenta=2000
-/*Saldo inicial*/
-consultarDinero(dineroEnCuenta) 
-/* 1. Depositar 2000*/ 
-dineroEnCuenta=depositarDinero(dineroEnCuenta,2000)
-/* 2. Retirar 450*/ 
-dineroEnCuenta=retirarDinero(dineroEnCuenta,450)
-/* 3. Consultar saldo*/ 
-consultarDinero(dineroEnCuenta)
-/* 4. Retirar 400*/ 
-dineroEnCuenta=retirarDinero(dineroEnCuenta,400)
-/*5. Consultar saldo*/
-consultarDinero(dineroEnCuenta)

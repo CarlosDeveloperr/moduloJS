@@ -1,5 +1,7 @@
-  /*funciones como arrow functions*/
-  const consultarDinero = (Consulta)=>console.log(`El dinero que tienes en la cuenta en este momento es :${Consulta}`)
+let dineroEnCuenta=2000
+ 
+ /*funciones como arrow functions*/
+  const consultarDinero = ()=>console.log(`El dinero que tienes en la cuenta en este momento es :${dineroEnCuenta}`)
   
 
  const retirarDinero = (dineroActual,dineroRetiro) =>{
@@ -19,18 +21,14 @@
 
 const depositarDinero =(dineroActual,dineroDepositar)=>dineroDepositar>0 ? dineroActual+dineroDepositar : console.log('No se realizo deposito')
   
-// const transferencia = (dineroActual,cantidad,cuenta="1234") => {
-//      cantidad > 0 ? 
-//         cuenta===1234 ?
-//          dineroActual-cantidad : console.log("no se puede hacer la transferencia") 
-// }
+ const transferencia = (saldo,cantidad,cuenta="1234") => {
+   cantidad>0 ? 
+        cuenta ==="1234" ?  dineroEnCuenta-=cantidad:console.log("cuenta invalida")
+   : console.log("Dame una cantidad valida...")
+
+ }
  
         
-
-
-
-
-let dineroEnCuenta=2000
 /*Saldo inicial*/
 consultarDinero(dineroEnCuenta) 
 /* 1. Depositar 2000*/ 
@@ -43,7 +41,7 @@ consultarDinero(dineroEnCuenta)
 dineroEnCuenta=retirarDinero(dineroEnCuenta,400)
 /*5. Consultar saldo*/
 consultarDinero(dineroEnCuenta)
-/*6. Transferencia */
+/*6. Transferencia */ console.log(dineroEnCuenta)
 transferencia(dineroEnCuenta,2000)
 /*7. Consultar saldo*/
 consultarDinero(dineroEnCuenta)

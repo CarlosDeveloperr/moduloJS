@@ -1,158 +1,155 @@
-console.log("Funciones")
+/**
+ * Convertidor de temperatura
+ * Generar una función, que reciba (grados, entrada, salída ) 
+ * Default es ºC a ºF
+ * p.ej. (100,c,f) -> 100 ºC a ºF -> Default
+ * p.ej. (100,f,c) -> 100 ºF a ºC
+ * C to F -> (celsius*9)/5 + 32
+ * F to C -> ((fahrenheit - 32)*5)/9
+ *
+ */
 
-// //definicion de la funcion
-// function myFunction(params){
-//     console.log('hola =)')
+// function convertidorTemperatura (grados,entrada=1,salida=2)
+// {
+//   let resultado
+//   if(entrada===1 && salida===2){ /*de C a F*/ 
+//     // console.log("Primer if")
+//     resultado=(grados*9)/5 + 32
+//     return resultado
+//   }
+//   if (entrada===2 && salida===1) /*de F a C*/
+//   { 
+//     // console.log("segundo if")
+//     resultado=((grados - 32)*5)/9
+//     return resultado
+//   }
+ 
 // }
 
-// function getpi(){
-//     console.log('getPi')
-//     return 3.1416
-// }
+// let valor=convertidorTemperatura(60)
+// console.log("tu resultado es:"+valor)
 
-// let pi=getpi()
-// myFunction()
 
 /**
- * 1:
- * Pedir al usuario estos 3 datos
- * - Nombre
- * - Peso actual
- * Calcular el peso que tendria esa persona en la luna
- * Imprimirlo en consola
- * ** Opcional -> Crear una función **
- */ 
-
-let pesoActual = window.prompt("Cual es tu peso actual?")
-pesoEnLaLuna(pesoActual)
-
-function pesoEnLaLuna(pesoTierra){
-    let nombre = window.prompt("Cual es tu nombre astronauta?")
-    console.log("tu nombre es: " +nombre+ " y tu peso es: "+pesoActual)
-     let pesoLuna = (pesoActual/9.81)*1622
-    console.log("El peso que tienes en la luna seria: "+pesoLuna)
-}
-
-
-
-
- /**
- * 2:
- * Pedir al usuario la calificación de un examen ( 0 a 100)  por el prompt
- * Imprimir en consola las equivalencias en letra su calificación, es decir
- * -> si es mayor o igual a 90, imprimir "A"
- * -> si es mayor o igual a 80 y menor que 90 , imprimir "B"
- * -> si es mayor o igual a 70 y menor que 80 , imprimir "C"
- * -> si es mayor o igual a 60 y menor que 70 , imprimir "D"
- * -> si es mayor o igual a 50 y menor que 60 , imprimir "E"
- * -> si es menor 50 , imprimir "F"
- */
-   let calif = parseInt(window.prompt("Cual fue tu calificacion en el examen ?"))
-   LetraCalif(calif)
-
-   function LetraCalif(calif){
-    if(calif>=90)
-    console.log("Tu calificacion es 'A' ")
-    else if(calif>=80 && calif<90)
-    console.log("Tu calificacion es 'B'")
-    else if(calif>=70 && calif<80)
-    console.log("Tu calificacion es 'C'")
-    else if(calif>=60 && calif<70)
-    console.log("Tu calificacion es 'D'")
-    else if(calif>=50 && calif<60)
-    console.log("Tu calificacion es 'E'")
-    else
-    console.log("Tu calificacion es 'F'")
-      
-   }
-  
-
-  /**
- * 3:
- * Pedir el nombre de una persona
- * Verificar si el nombre termina con una vocal
- * imprimir que `Tu nombre termina con ${vocal}`
- * Sino
- * imprimir que `Tu nombre termina con ${consonante}`
- * -> Pedro
- * -> `Tu nombre termina con o`
+ * Ejercicio
+ * Simular el funcionamiento de un cajero
+ * 
+ * considerar estas acciones
+ * 1. Retiro de efectivo (cantidad)
+ * 2. Depósito (cantidad)
+ * 3. Consulta de saldo () 
+ * 4. Traspasar a la cuenta 1234 $500 (cuenta, cantidad)
+ * 
+ * Datos iniciales
+ * Saldo inicial: $2000
+ * Consultas de saldo = 2000
+ * Depósitos = 0
+ * Retiros = 0
+ * 
+ * 
+ * Pasos a ejecutar
+ * 1. Depositar 2000
+ * 2. Retirar 450
+ * 3. Consultar saldo
+ * 4. Retirar 400
+ * 5. Consultar saldo
+ * 
  */
 
-  
-let nombre = window.prompt("Dame un nombre")
-let letra
-function lastLetter(nombre)
-{
-    let ultimaLetra=nombre[nombre.length - 1].toLowerCase();
-    if(ultimaLetra=='a' || ultimaLetra=='e' || ultimaLetra=='i' || ultimaLetra=='o' || ultimaLetra=='u'){
-    console.log(`Tu nombre termina con  vocal `)
-    return ultimaLetra
-    }
-    else
-    {
-    console.log(`Tu nombre termina con consonante `)
-    return ultimaLetra
-    }
-}
-letra=lastLetter(nombre)
-console.log(`Tu nombre termina con la letra ${letra}`)
+  // function consultarDinero(Consulta){
+  //   // console.log("El dinero que tienes en la cuenta en este momento es: "+Consulta)
+  //   console.log(`El dinero que tienes en la cuenta en este momento es :${Consulta}`)
+  // }
 
- /**
- * Dado los siguientes 2 strings
- * 'smtp'
- * 'aeiou'
- * Imprimir en consola las siguientes combinaciones
- * -> sa, se, si, so , su 
- * -> ma, me, mi, mo , mu 
- * -> ta, te, ti, to , tu 
- * -> pa, pe, pi, po , pu
- */
+  // function retirarDinero(dineroActual,dineroRetiro){
+  //   if(dineroRetiro>0){
+  //     if(dineroActual>= dineroRetiro)
+  //     {
+  //             let valor=dineroEnCuenta-dineroRetiro
+  //             return valor
+  //     }else{
+  //       console.log("no tienes dinero suficiente")
+  //     }
+  //   }else{
+  //     console.log("Numero mayor que 0 por favor")
+  //   }
+   
+  // }
 
-  let primerAray='smtp'
-  let segundoArray='aeiou'
-  let concatenacion=''
- Union(primerAray,segundoArray)
+  // function depositarDinero(dineroActual,dineroDepositar){
+  //   if(dineroDepositar>0)
+  //   {
+  //      valor=dineroActual+dineroDepositar
+  //     return valor
+  //   }
+   
+  // }
 
-  function Union(primerAray,segundoArray)
-  {
-       console.log("Tu combinaciones son:\n")
-  for(let i=0;i<=segundoArray.length;i++){
-      for(let j=0;j<=primerAray.length;j++){
-         concatenacion+=primerAray.substr(i,1) + segundoArray.substr(j,1) + ','
-      }
-      console.log(concatenacion)
-      concatenacion=' '
-    }
+  // function transferencia(dineroActual,cantidad,cuenta="1234"){
+  //     if(cantidad > 0){
+  //         if(cuenta===1234){
+  //       valor=dineroActual+cantidad
+  //       return valor
+  //     }else{
+  //       console.log("no se puede hacer la transferencia")
+  //     }
+  //  }
+  // }
+
+
+  /*funciones como expresiones o variables*/
+  const consultarDinero= function (Consulta){
+    // console.log("El dinero que tienes en la cuenta en este momento es: "+Consulta)
+    console.log(`El dinero que tienes en la cuenta en este momento es :${Consulta}`)
   }
- 
 
-
-    /* 5:
-    * Pedir al usuario 2 numeros 
-    * Imprimir en consola cual es el menor de los 2
-    * Imprimir en consola cual es el mayor de los 2
-    */
-     var num = parseInt(window.prompt("Ingresa un numero "))
-     var num2 = parseInt(window.prompt("Ingresa otro numero "))
-    
-     comparacionDosNumeros(num,num2)
-    function comparacionDosNumeros(num,num2)
-{
-    if(num<num2)
-    {
-    mayor=num2
-    menor=num
-    console.log("El numero mayor es: " +mayor+" el numero menor es: "+menor)
+ const retirarDinero = function (dineroActual,dineroRetiro){
+    if(dineroRetiro>0){
+      if(dineroActual>= dineroRetiro)
+      {
+              let valor=dineroEnCuenta-dineroRetiro
+              return valor
+      }else{
+        console.log("no tienes dinero suficiente")
+      }
+    }else{
+      console.log("Numero mayor que 0 por favor")
     }
-    else if(num>num2)
-    {
-    mayor=num
-    menor=num2
-    console.log("El numero mayor es: " +mayor+" el numero menor es: "+menor)
-    }
-    else if(num==num2)
-    console.log("Son iguales los numeros")
-}
+   
+  }
 
-  
- 
+ const depositarDinero = function (dineroActual,dineroDepositar){
+    if(dineroDepositar>0)
+    {
+       valor=dineroActual+dineroDepositar
+      return valor
+    }
+   
+  }
+
+   const transferencia =function (dineroActual,cantidad,cuenta="1234"){
+      if(cantidad > 0){
+          if(cuenta===1234){
+        valor=dineroActual+cantidad
+        return valor
+      }else{
+        console.log("no se puede hacer la transferencia")
+      }
+   }
+  }
+
+
+
+let dineroEnCuenta=2000
+/*Saldo inicial*/
+consultarDinero(dineroEnCuenta) 
+/* 1. Depositar 2000*/ 
+dineroEnCuenta=depositarDinero(dineroEnCuenta,2000)
+/* 2. Retirar 450*/ 
+dineroEnCuenta=retirarDinero(dineroEnCuenta,450)
+/* 3. Consultar saldo*/ 
+consultarDinero(dineroEnCuenta)
+/* 4. Retirar 400*/ 
+dineroEnCuenta=retirarDinero(dineroEnCuenta,400)
+/*5. Consultar saldo*/
+consultarDinero(dineroEnCuenta)

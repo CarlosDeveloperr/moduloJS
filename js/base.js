@@ -49,19 +49,19 @@ let nuevoArray = [];
 //   nuevoArray[index] = nuevoItem;
 // });
 
-//ArrowFunctions
+/* //ArrowFunctions
 numericos.forEach((numero, index) => {
   let nuevoItem = numero.toString();
   nuevoArray[index] = nuevoItem;
 });
-console.log(nuevoArray);
+console.log(nuevoArray); */
 
-//Funcion con variable
-// const convertirString = numericos.forEach((numero, index) => {
-//   let nuevoItem = numero.toString();
-//   nuevoArray[index] = nuevoItem;
-// });
-// console.log(nuevoArray);
+// Funcion con variable
+const convertirString = numericos.forEach((numero, index) => {
+  let nuevoItem = numero.toString();
+  nuevoArray[index] = nuevoItem;
+});
+console.log(nuevoArray);
 
 //***************************************************************************** */
 // ejercicio 3 funcion que dados 2 parametros .forEach() o .map() o for()
@@ -84,3 +84,5 @@ const convertLeapYear = (startYear, endYear) => {
 
   return filteredYears;
 };
+
+//Filter

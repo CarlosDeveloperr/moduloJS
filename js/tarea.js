@@ -1,52 +1,62 @@
-// Metodos de array
+/**
+ * 1:
+ * Estudiar los metodos
+ * .map()
+ * .reduce()
+ */
 
-/*
-Escribir una funcion que tome como parametro un array de numeros e imprima en
-consola el array al revés
-arrayReverse([1,2,3,4]). 
--> [4,3,2,1]
-*/
-let array1 = [1, 2, 3, 4];
-let array2 = "";
-const alreves = (array1) => (array2 = array1.reverse());
-console.log(`Tu array al reves es:${array2}`);
+/**
+ * Ejercicio 1:
+ * Realizar una funcion que dado un array de strings como parametro
+ * retorne un nuevo array con todos los strings que tienen como maximo 5 caracteres
+ */
 
-/*
-Escribir una funcion que tome como parametro 2 arrays, y devuelva un numero 
-con la suma total de esos 2 arrays.
-arrayReduce([1,2,3,4],[1,2]). 
--> 13
-*/
-let arrayOne;
-let arrayTwo;
-let arrayConcat = arrayOne.concat(arrayTwo);
-let suma = 0;
-
-arrayConcat.forEach((item) => {
-  suma += item;
-});
-
-console.log(suma);
-
-/*
-Escribir una función que tome como parametro 2 arrays, y devuelva un array 
-con los numeros repetidos en los 2 arrays
-arrayReduce([1,2,3,4],[1,2]). 
--> [1,2]
-*/
-const arrayRepeatedNumbers = (arrOne, arrTwo) => {
-  let repeatedNum = arrOne.filter((element) => {
-    if (arrTwo.includes(element)) {
-      return element;
+let nuevoArray = [];
+const fiveCharactersOnly = (arr) => {
+  arr.forEach((item, index) => {
+    // console.log(item);
+    if (item.length <= 5) {
+      nuevoArray[index] = item;
     }
   });
-  let repeatedNumOnly = repeatedNum.filter((element, index, arr) => {
-    if (arr.indexOf(element) === index) {
-      return element;
-    }
-  });
-  return repeatedNumOnly;
+  return nuevoArray;
 };
 
-let RepeatedNumbers = arrayRepeatedNumbers([1, 2, 3, 4, 3, 4, 4], [1, 2, 4]);
-console.log(RepeatedNumbers);
+// const fiveCharactersOnly = (arr) => {
+//   arr.forEach((item, index) =>item.length <= 5 ? nuevoArray[index] = item : '')
+//   return nuevoArray;
+// };
+
+// test
+let responseFiveCharacters = fiveCharactersOnly([
+  "dog",
+  "wolf",
+  "family",
+  "eaten",
+  "camping",
+]);
+
+console.log("Las palabras con 5 caracteres son: " + responseFiveCharacters);
+// [ "dog", "wolf", "eaten"]
+
+/****************************************************************************
+ * Ejericio 2:
+ * Realizar una funcion que dado un array de nombres de koders como parametro
+ * Retorne un nuevo array con todos koders que tienen mas de 1 nombre
+ *
+ */
+
+const twoNamesKoders = (arr) => arr.filter((item) => item.includes(" "));
+
+// test
+let responseTwoNamesKoders = twoNamesKoders([
+  "Antonio",
+  "Victor Yair",
+  "Luis Carlos",
+  "Victor",
+  "José Omar",
+]);
+// ["Victor Yair", "Luis Carlos", "José Omar"]
+console.log(
+  "Las personas que tienen mas de 2 nombres son: " + responseTwoNamesKoders
+);

@@ -34,3 +34,19 @@ con los numeros repetidos en los 2 arrays
 arrayReduce([1,2,3,4],[1,2]). 
 -> [1,2]
 */
+const arrayRepeatedNumbers = (arrOne, arrTwo) => {
+  let repeatedNum = arrOne.filter((element) => {
+    if (arrTwo.includes(element)) {
+      return element;
+    }
+  });
+  let repeatedNumOnly = repeatedNum.filter((element, index, arr) => {
+    if (arr.indexOf(element) === index) {
+      return element;
+    }
+  });
+  return repeatedNumOnly;
+};
+
+let RepeatedNumbers = arrayRepeatedNumbers([1, 2, 3, 4, 3, 4, 4], [1, 2, 4]);
+console.log(RepeatedNumbers);

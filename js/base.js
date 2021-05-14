@@ -1,88 +1,75 @@
-// Ejercicio 1 .forEach()
-// Dado un array con solo números
-// obtener el segundo valor mas alto
-// input: [1,4,3,2,5]
-// output: -> 5
+//Ejercicio 1
+// funcion que dado un array
+// genere un nuevo array con los mismos numeros como strings
+let arrayAux = [];
+let valor = [];
+let arrayAux1 = [];
+let valor1 = [];
+function stringItUp(arr) {
+  arr.forEach((element) => {
+    arrayAux.push(element.toString());
+  });
+  return arrayAux;
+}
+valor = stringItUp([2, 5, 100]);
+console.log(valor);
+// ["2", "5", "100"]
 
-let numero = [1, 4, 3, 2, 5];
-let mayor = numero[0];
+//Ejercicio 2
+function capitalizeNames(arr) {
+  arr.forEach((element) => {
+    // element = element.toLowerCase();
+    // element[0] = element[0].toUpperCase();
+    // console.log("palabra modificada: " + element[0]);
+    arrayAux1.push(element.toLowerCase());
+  });
+  return arrayAux1;
+}
 
-//Funcion normal
-// numero.forEach(function (numero) {
-//   if (numero > mayor) {
-//     console.log("Anterior mayor: " + mayor + ", nuevo mayor: " + numero);
-//     mayor = numero;
-//   }
-// });
+valor1 = capitalizeNames(["jorge", "antOnio", "jUan", "victor"]);
+console.log(valor1);
+// ["Jorge", "Antonio", "Juan", "Victor"]
 
-//ArrowFunction
-numero.forEach((numero) => {
-  if (numero > mayor) {
-    // console.log("Anterior mayor: " + mayor + ", nuevo mayor: " + numero);
-    mayor = numero;
-  }
-});
-console.log("El numero mayor es: " + mayor);
+//Ejercicio 3
+// Dados 2 arrays
+// array de nombres
+// array de apellidos
+// Crear una funcion que reciba los 2 arrays,
+// y retorne un array con los nombres completos
+const joinNames = (arrNames, arrSurnames) => {
+  //
+  // joinNames.map((value, index) => {
+  //   let fullname = `${value} ${arrSurnames[index]}`;
+  //   return fullname;
+  // });
 
-////Funcion metida en una variable
-// const convertidor = numero.forEach((numero) => {
-//   if (numero > mayor) {
-//     // console.log("Anterior mayor: " + mayor + ", nuevo mayor: " + numero);
-//     mayor = numero;
-//   }
-// });
-// console.log("El numero mayor es: " + mayor);
-
-//**************************************************************** */
-// ejercicio 2 .forEach() o .map() o for()
-// función
-// convertir todos los elementos numericos de un array
-// a strings
-// input: [1,2,3,4,5]
-// output -> ['1,','2','3','4','5']
-
-let numericos = [1, 2, 3, 4, 5];
-let nuevoArray = [];
-//funcion normal
-// numericos.forEach(function (numero, index) {
-//   let nuevoItem = numero.toString();
-//   nuevoArray[index] = nuevoItem;
-// });
-
-/* //ArrowFunctions
-numericos.forEach((numero, index) => {
-  let nuevoItem = numero.toString();
-  nuevoArray[index] = nuevoItem;
-});
-console.log(nuevoArray); */
-
-// Funcion con variable
-const convertirString = numericos.forEach((numero, index) => {
-  let nuevoItem = numero.toString();
-  nuevoArray[index] = nuevoItem;
-});
-console.log(nuevoArray);
-
-//***************************************************************************** */
-// ejercicio 3 funcion que dados 2 parametros .forEach() o .map() o for()
-// p1 = año de inicio
-// p2 = año de fin
-// y devuelva un array con los años que son bisiestos
-// que se encuentran en ese rango
-// [1990, 2000, 2001, 2020]
-// -> [2000,2020]
-const convertLeapYear = (startYear, endYear) => {
-  let filteredYears = [];
-  for (let year = startYear; year <= endYear; year++) {
-    if (
-      (year % 4 === 0 && year % 100 !== 0) ||
-      (year % 100 === 0 && year % 400 === 0)
-    ) {
-      filteredYears.push(year);
-    }
-  }
-
-  return filteredYears;
+  return arrNames.map((value, index) => `${value} ${arrSurnames[index]}`);
 };
+console.log(joinNames(["jorge", "luis"], ["camarillo", "cristobal"]));
+// ["jorge camarillo ", "luis cristobal"]
 
-//Filter
+/******************************* */
+const stringConcat = (arr) => arr.reduce((acc, cv) => acc + cv, "");
+
+let resStringconcat = stringConcat([1, 2, 3]);
+console.log(resStringconcat);
+// "123"
+
+//********************************************* */
+const totalShoppingCart = (arr) => arr.reduce((acc, cv) => acc + cv[1], 0);
+
+// const totalShoppingCart = (arr) =>{
+// let response=arr.reduce((acc, cv) =>{
+//         return acc + cv[1]
+// }, 0)
+// return response
+// }
+
+let arr = [
+  ["Reloj", 500],
+  ["Reloj", 300],
+  ["Reloj", 1200],
+];
+const totalAPagar = totalShoppingCart(arr);
+console.log("El total a pagar es: " + totalAPagar);
+// 2000

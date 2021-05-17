@@ -1,75 +1,87 @@
-//Ejercicio 1
-// funcion que dado un array
-// genere un nuevo array con los mismos numeros como strings
-let arrayAux = [];
-let valor = [];
-let arrayAux1 = [];
-let valor1 = [];
-function stringItUp(arr) {
-  arr.forEach((element) => {
-    arrayAux.push(element.toString());
-  });
-  return arrayAux;
-}
-valor = stringItUp([2, 5, 100]);
-console.log(valor);
-// ["2", "5", "100"]
+// let obj = {
+//   entrada: "",
+//   comidaPrincipal: "",
+//   postre: "",
+//   precio: 100,
+// };
 
-//Ejercicio 2
-function capitalizeNames(arr) {
-  arr.forEach((element) => {
-    // element = element.toLowerCase();
-    // element[0] = element[0].toUpperCase();
-    // console.log("palabra modificada: " + element[0]);
-    arrayAux1.push(element.toLowerCase());
-  });
-  return arrayAux1;
-}
-
-valor1 = capitalizeNames(["jorge", "antOnio", "jUan", "victor"]);
-console.log(valor1);
-// ["Jorge", "Antonio", "Juan", "Victor"]
-
-//Ejercicio 3
-// Dados 2 arrays
-// array de nombres
-// array de apellidos
-// Crear una funcion que reciba los 2 arrays,
-// y retorne un array con los nombres completos
-const joinNames = (arrNames, arrSurnames) => {
-  //
-  // joinNames.map((value, index) => {
-  //   let fullname = `${value} ${arrSurnames[index]}`;
-  //   return fullname;
-  // });
-
-  return arrNames.map((value, index) => `${value} ${arrSurnames[index]}`);
-};
-console.log(joinNames(["jorge", "luis"], ["camarillo", "cristobal"]));
-// ["jorge camarillo ", "luis cristobal"]
-
-/******************************* */
-const stringConcat = (arr) => arr.reduce((acc, cv) => acc + cv, "");
-
-let resStringconcat = stringConcat([1, 2, 3]);
-console.log(resStringconcat);
-// "123"
-
-//********************************************* */
-const totalShoppingCart = (arr) => arr.reduce((acc, cv) => acc + cv[1], 0);
-
-// const totalShoppingCart = (arr) =>{
-// let response=arr.reduce((acc, cv) =>{
-//         return acc + cv[1]
-// }, 0)
-// return response
-// }
-
-let arr = [
-  ["Reloj", 500],
-  ["Reloj", 300],
-  ["Reloj", 1200],
+let pedidos = [
+  {
+    ensalada: "ensalada de pepinos",
+    comidaPrincipal: "paella",
+    postre: "platano",
+    precio: "100",
+  },
+  {
+    ensalada: "ensalada de tomates",
+    comidaPrincipal: "pescado",
+    postre: "helado",
+    precio: "120",
+  },
+  {
+    ensalada: "ensalada  cesar",
+    comidaPrincipal: "enchiladas",
+    postre: "platano",
+    precio: "80",
+  },
+  {
+    ensalada: "ensalada simple",
+    comidaPrincipal: "salmón",
+    postre: "yogurt",
+    precio: "100",
+  },
 ];
-const totalAPagar = totalShoppingCart(arr);
-console.log("El total a pagar es: " + totalAPagar);
-// 2000
+
+// [{},{},{},{},{}]
+
+//Funcion Paella
+const platoPrincipalPaella = (arr) => {
+  let paella = arr.reduce((acumulador, valorActual) => {
+    if (valorActual.comidaPrincipal === "paella") {
+      acumulador++;
+    }
+    return acumulador;
+  }, 0);
+  return paella;
+};
+//Funcion postres platano O helado
+const postresPlatanoHelado = (arr) => {
+  let postres = arr.reduce((acumulador, valorActual) => {
+    if (valorActual.postre === "platano" || valorActual.postre === "helado") {
+      acumulador++;
+    }
+    return acumulador;
+  }, 0);
+  return postres;
+};
+//Funcion precio mayor a 90
+const preciosMayor90 = (arr) => {
+  let mayor90 = arr.reduce((acumulador, valorActual) => {
+    if (valorActual.precio > 90) {
+      //boquita se come al mas grande(mayor)
+      acumulador++;
+    }
+    return acumulador;
+  }, 0);
+  return mayor90;
+};
+//Funcion precio menor a 90
+const preciosMenor90 = (arr) => {
+  let menor90 = arr.reduce((acumulador, valorActual) => {
+    if (valorActual.precio < 90) {
+      acumulador++;
+    }
+    return acumulador;
+  }, 0);
+  return menor90;
+};
+//Llamadas de funciones
+const OrdenPaella = platoPrincipalPaella(pedidos);
+const OrdenPostres = postresPlatanoHelado(pedidos);
+const PrecioMayor = preciosMayor90(pedidos);
+const PrecioMenor = preciosMenor90(pedidos);
+//Impresiones
+console.log("Las ordenes de paella son: " + OrdenPaella);
+console.log("Las ordenes de Platano o helado de son: " + OrdenPostres);
+console.log("Las ordenes que tienen un precio mayor a $90 son: " + PrecioMayor);
+console.log("Las ordenes que tienen un precio menor a $90 son: " + PrecioMenor);

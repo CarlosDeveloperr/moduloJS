@@ -73,6 +73,8 @@ let library = [
 //   });
 //   return aux1;
 // };
+
+/************************************* */
 //Segunda solucion
 const AcomodadoTitulo = (arr) => {
   const aux2 = library.slice();

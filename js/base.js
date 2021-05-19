@@ -1,24 +1,84 @@
-console.log("Geters y Setters");
+console.log("DOOOM");
+/*
+let lista = document.querySelector('.lista')
+let koders = ['antonio', 'victor', 'rose', 'jorge']
+let listKoders = ''
+koders.forEach( (namekoder, index) => {
+    listKoders += `
+        <li 
+            id="koder${index + 1}"
+            key='koder_${index}'
+            class='item_koder'
+        >
+            ${namekoder}
+        </li>
+    `
+})
+lista.innerHTML = listKoders
 
-let koders = [
+
+
+
+*/
+//imprimir Array en table
+let koders = ["antonio", "victor", "rose", "jorge"];
+let lista = document.querySelector(".table-Array tbody");
+
+let listKoders = "";
+koders.forEach((namekoder, index) => {
+  listKoders += `
+          <tr>
+            <th scope="row">${index + 1}</th>
+            <td class="Nombre">${namekoder}</td>
+          </tr>
+    `;
+});
+lista.innerHTML = listKoders;
+
+//Imprimir objeto en table
+/*
+Destructuracion de objetos
+
+let obj = {
+    name: 'jorge',
+    lastName: 'camarillo',
+    age: 30,
+    github:'@dered-dev'
+}
+let {name, lastName} = obj
+*/
+let kodersObject = [
   {
-    name: "jorge",
+    name: "Jorge",
     lastName: "Camarillo",
-    age: 26,
+    age: 30,
+    github: "@dered-dev",
   },
   {
     name: "Carlos",
     lastName: "Alcibar",
-    age: 26,
+    age: 24,
+    github: "@DevCarlos",
+  },
+  {
+    name: "Daniela",
+    lastName: "Belaunzaran",
+    age: 23,
+    github: "@DaniScrum",
   },
 ];
-//agregar una funcion como propiedad (metodo) a un objeto
-koders.forEach((element) => {
-  element.getnombreCompleto = function () {
-    return `El Koder ${this.name} ${this.lastName}  y tienes ${this.age} años`;
-  };
+let listaObjeto = document.querySelector(".table-Object tbody");
+
+let listKodersObj = "";
+kodersObject.forEach((elemento, index) => {
+  listKodersObj += `
+          <tr>
+            <th scope="row">${index + 1}</th>
+            <td class="Nombre">${elemento.name}</td>
+            <td class="Apellido">${elemento.lastName}</td>
+            <td class="Edad">${elemento.age}</td>
+            <td class="Github">${elemento.github}</td>
+          </tr>
+    `;
 });
-//imprimir todos los koder
-koders.forEach((element) => {
-  console.log(element.getnombreCompleto());
-});
+listaObjeto.innerHTML = listKodersObj;

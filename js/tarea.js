@@ -96,7 +96,7 @@ SortId.forEach((elemento) => {
             <td class="Nombre bg-primary">${elemento.name}</td>
             <td class="Descripcion">${elemento.description}</td>
             <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl">${elemento.imgurl}</td>
+            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
           </tr>
     `;
 });
@@ -113,7 +113,7 @@ SortId.forEach((elemento) => {
             <td class="Nombre">${elemento.name}</td>
             <td class="Descripcion">${elemento.description}</td>
             <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl">${elemento.imgurl}</td>
+            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
           </tr>
     `;
 });
@@ -129,7 +129,7 @@ SortNombre.forEach((elemento) => {
             <td class="Nombre">${elemento.name}</td>
             <td class="Descripcion">${elemento.description}</td>
             <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl">${elemento.imgurl}</td>
+            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
           </tr>
     `;
 });
@@ -145,7 +145,7 @@ SortPrecio.forEach((elemento) => {
             <td class="Nombre">${elemento.name}</td>
             <td class="Descripcion">${elemento.description}</td>
             <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl">${elemento.imgurl}</td>
+            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
           </tr>
     `;
 });

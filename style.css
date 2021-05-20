@@ -1,3 +1,7 @@
 body{
   margin: 20px;
 }
+body .imgAmazon{
+  width:120px;
+  height:120px;
+}

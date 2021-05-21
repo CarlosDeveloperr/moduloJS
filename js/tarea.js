@@ -100,6 +100,7 @@ SortId.forEach((elemento) => {
           </tr>
     `;
 });
+
 listaObjetoColorear.innerHTML = listKodersObjColorear;
 
 //Llenado dinamico de SortId

@@ -3,7 +3,7 @@ console.log("Eventos");
 let koders = [
   {
     id: 23,
-    name: "Jorge",
+    name: "jorge",
   },
   {
     id: 31,
@@ -11,37 +11,35 @@ let koders = [
   },
   {
     id: 212,
-    name: "Fer",
+    name: "fer",
   },
   {
     id: 20,
-    name: "Rose",
+    name: "rose",
   },
 ];
 
 let listKoders = [...koders];
-let enrolledKoders = [];
-enrolledKoders = [
+let enrolledKoders = [
   {
-    id: 25,
-    name: "Carlos",
+    id: 234,
+    name: "Yair",
   },
 ];
 
-/// print table koders
+// print table koders
 
 const printTableKoders = (arrKoders, selector, type) => {
-  console.log("ArrayKoders", arrKoders);
   // temp
   let accKodersList = "";
-  arrKoders.forEach((koder) => {
+  arrKoders.forEach((koder, index) => {
     if (type === "list") {
       accKodersList += `
           <tr class="trkoder_${koder.id}">
               <td>${koder.id}</td>
               <td>${koder.name}</td>
               <td>
-                  <button class="btn btn-primary" onclick="enrolledkoder(${koder.id})">Inscribir</button>
+                  <button class="btn btn-primary enrolledKoderButton" data-id="${koder.id}" data-index="${index}">Inscribir</button>
               </td>
           </tr>
           `;
@@ -51,7 +49,7 @@ const printTableKoders = (arrKoders, selector, type) => {
               <td>${koder.id}</td>
               <td>${koder.name}</td>
               <td>
-                  <button class="btn btn-warning" onclick="removekoder(${koder.id})">Dar de baja</button>
+                  <button class="btn btn-warning removeKoderButton" data-id="${koder.id}" data-index="${index}">Dar de baja</button>
               </td>
           </tr>
           `;
@@ -62,55 +60,87 @@ const printTableKoders = (arrKoders, selector, type) => {
   sel.innerHTML = accKodersList;
 };
 
-const enrolledkoder = (idKoder) => {
-  // get koder data
-  let koderItem = listKoders.filter((koder) => koder.id === idKoder);
-  enrolledKoders.push(koderItem[0]);
-  console.log("EnrolledKoders", enrolledKoders);
-
-  // filter array without koder
-  let kodersNotDeleted = listKoders.filter((koder) => koder.id !== idKoder);
-  listKoders = [...kodersNotDeleted];
-
-  updateScreen();
-};
-
-const removekoder = (idKoder) => {
-  console.log("Idkoder", idKoder);
-  let enrrolledKoder = enrolledKoders.filter((koder) => koder.id == idKoder);
-  listKoders.push(enrrolledKoder[0]);
-  // filter koder
-  let newdataEnrrolledKoder = enrolledKoders.filter(
-    (koder) => koder.id !== idKoder
-  );
-  enrolledKoders = [...newdataEnrrolledKoder];
-  console.log("New data Enrolled:", newdataEnrrolledKoder);
-  console.log("Enrolled", enrolledKoders);
-
-  updateScreen();
-};
-//Peeposhy
-const updateScreen = () => {
+const updateTable = () => {
   printTableKoders(listKoders, ".table__koders tbody", "list");
   printTableKoders(enrolledKoders, ".table__kodersEnrrolled tbody", "enrolled");
 };
 
-let mostrar = document.querySelector(".Divbotones .mostrar");
-let reset = document.querySelector(".Divbotones .reset");
-if (mostrar) {
-  mostrar.addEventListener("click", (event) => {
-    updateScreen();
-  });
-}
-if (reset) {
-  reset.addEventListener("click", (event) => {
-    listKoders = listKoders.concat(enrolledKoders);
-    // listKoders = [...listKoders, ...enrolledKoders];
-    enrolledKoders = [];
-    updateScreen();
+let wrappKoderList = document.querySelector(".table__koders tbody");
+wrappKoderList.addEventListener("click", (event) => {
+  // console.log(event.target);
+
+  if (event.target.classList.contains("enrolledKoderButton")) {
+    let idKoder = parseInt(event.target.dataset.id);
+
+    let koderItem = listKoders.filter((koder) => koder.id === idKoder);
+    enrolledKoders.push(koderItem[0]);
+
+    let kodersNotDeleted = listKoders.filter((koder) => koder.id !== idKoder);
+    listKoders = [...kodersNotDeleted];
+
+    updateTable();
+  }
+});
+
+let wrappKoderEnrrolled = document.querySelector(
+  ".table__kodersEnrrolled tbody"
+);
+wrappKoderEnrrolled.addEventListener("click", (element) => {
+  console.log(element.target.classList);
+  if (element.target.classList.contains("removeKoderButton")) {
+    let idKoder = parseInt(element.target.dataset.id);
+
+    let enrrolledKoder = enrolledKoders.filter((koder) => koder.id == idKoder);
+    let newdataEnrrolledKoder = enrolledKoders.filter(
+      (koder) => koder.id !== idKoder
+    );
+
+    listKoders.push(enrrolledKoder[0]);
+    enrolledKoders = [...newdataEnrrolledKoder];
+
+    updateTable();
+  }
+});
+
+// mostrar
+let btnShow = document.querySelector(".mostrar");
+if (btnShow) {
+  btnShow.addEventListener("click", () => {
+    updateTable();
   });
 }
 
-// //con eventos
-// let inscribir = document.querySelector("btn btn-primary");
-// let DardeBaja = document.querySelector("btn btn-warning");
+let btnReset = document.querySelector(".reset");
+if (btnReset) {
+  btnReset.addEventListener("click", () => {
+    listKoders = listKoders.concat(enrolledKoders);
+    // listKoders  = [...listKoders, ...enrolledKoders]
+    enrolledKoders = [];
+
+    updateTable();
+  });
+}
+
+let loginForm = document.querySelector("#formLogin");
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // console.log('click en enviar')
+  if (document.querySelector("#idkoder").value === "") {
+    alert("Escribe un ID");
+    return;
+  }
+  if (document.querySelector("#namekoder").value === "") {
+    alert("Escribe un nombre de Koder");
+    return;
+  }
+
+  let idkoder = parseInt(document.querySelector("#idkoder").value);
+  let namekoder = document.querySelector("#namekoder").value;
+  let aux = { id: idkoder, name: namekoder };
+  //Insertar nueva tupla
+  console.log("Antes de la insercion", listKoders);
+  listKoders.push(aux);
+  console.log("Despues de la insercion", listKoders);
+  console.log("enviamos los datos de Nuevo Koder");
+});

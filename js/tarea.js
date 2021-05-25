@@ -1,153 +1,172 @@
+console.log("ajax");
 /**
- * Ejercicio 1
- * Dado el siguiente array de objetos generar
- * Funcion que pinte mi lista de deseos
-
+ * AJAX. Asyncronous Java Script And XML
+ * JSON
+ * XHR -> xmlhttprequest
+ * Fetch
  */
 
-let WishList = [
-  {
-    iditem: 5,
-    name: "Nike Jacket",
-    description: "Nike Jacket-Chamarra de hombre",
-    price: 1000,
-    imgurl: "https://www.amazon.com.mx/images/I/71dLLLfSfUL._AC_SY695_.jpg",
-  },
-  {
-    iditem: 1,
-    name: "Adidas Grand Court",
-    description: "Adidas Grand Court Base EE7905 Tenis para Hombre",
-    price: 859,
-    imgurl: "https://www.amazon.com.mx/images/I/71wNHYOh60L._AC_SX695_.jpg",
-  },
-  {
-    iditem: 2,
-    name: "Nike Metcon",
-    description:
-      "Nike Metcon Sport Aq7489-008 - Zapatillas deportivas para hombre",
-    price: 990,
-    imgurl: "https://www.amazon.com.mx/images/I/71dLLLfSfUL._AC_SY695_.jpg",
-  },
-  {
-    iditem: 3,
-    name: "Nike Carreras",
-    description: "Nike Carreras de mujer",
-    price: 1200,
-    imgurl: "https://www.amazon.com.mx/images/I/71wNHYOh60L._AC_SX695_.jpg",
-  },
-];
+// Instanciarlo
+// Abrir la conexion
+// Enviar la petición
 
-// * Funcion que ordene por id mi lista de deseos
-const AcomodadoId = (arr) => {
-  const aux2 = WishList.slice();
-  aux2.sort((a, b) => {
-    if (a.iditem > b.iditem) {
-      return 1; //El que quiero que vaya primero
-    }
-    if (a.iditem < b.iditem) {
-      return -1;
-    }
-    return 0;
+//Llenado dinamico parte 1
+const printComments = (arr) => {
+  let acc = "";
+  arr.forEach((comment) => {
+    acc +=
+      // <th scope="row">1</th>
+      ` 
+    <tr>
+    <td>${comment.postId}</td>
+    <td>${comment.id}</td>
+    <td>${comment.name}</td>
+    <td>${comment.email}</td>
+    <td>${comment.body}</td>
+    <a href="/comment.html?idComment=${comment.id}" class="pr-4">Ver post</a>
+  </tr>
+  
+        `;
   });
-  return aux2;
-};
-// * Funcion que ordene por nombre de producto mi lista de deseos
-const AcomodadoNombre = (arr) => {
-  const aux = WishList.slice();
-  aux.sort((a, b) => {
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    return 0;
-  });
-  return aux;
-};
-// * Funcion que ordene por precio mi lista de deseos
-const AcomodadoPrecio = (arr) => {
-  const aux1 = WishList.slice();
-  aux1.sort((a, b) => {
-    if (a.price < b.price) {
-      return -1;
-    }
-    if (a.price < b.price) {
-      return 1;
-    }
-    return 0;
-  });
-  return aux1;
+  let list__JSON1 = document.querySelector(".list__JSON1");
+  list__JSON1.innerHTML = acc;
 };
 
-const SortId = AcomodadoId(WishList);
-const SortNombre = AcomodadoNombre(WishList);
-const SortPrecio = AcomodadoPrecio(WishList);
-
-//Llenado de html dinamico
-//Funcion Pintar lista de deseos  bg-primary
-let listaObjetoColorear = document.querySelector(".table-Colorear tbody");
-
-let listKodersObjColorear = "";
-SortId.forEach((elemento) => {
-  listKodersObjColorear += `
-          <tr>
-            <th scope="row">${elemento.iditem}</th>
-            <td class="Nombre bg-primary">${elemento.name}</td>
-            <td class="Descripcion">${elemento.description}</td>
-            <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
-          </tr>
-    `;
+const request = new XMLHttpRequest();
+request.open("GET", "https://jsonplaceholder.typicode.com/comments");
+request.addEventListener("readystatechange", () => {
+  if (request.readyState !== 4) {
+    return;
+  } else {
+    if (request.status >= 200 && request.status <= 299) {
+      const response = request;
+      const objectResponse = JSON.parse(response.responseText);
+      console.log(objectResponse);
+      printComments(objectResponse);
+    } else {
+      console.log("No se pudo ejecutar");
+    }
+  }
 });
+request.send();
 
-listaObjetoColorear.innerHTML = listKodersObjColorear;
-
-//Llenado dinamico de SortId
-let listaObjetoID = document.querySelector(".table-SortId tbody");
-
-let listKodersObj = "";
-SortId.forEach((elemento) => {
-  listKodersObj += `
-          <tr>
-            <th scope="row">${elemento.iditem}</th>
-            <td class="Nombre">${elemento.name}</td>
-            <td class="Descripcion">${elemento.description}</td>
-            <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
-          </tr>
-    `;
+//llenado dinamico parte 2
+const request2 = new XMLHttpRequest();
+request2.open("GET", "https://jsonplaceholder.typicode.com/photos");
+request2.addEventListener("readystatechange", () => {
+  if (request2.readyState !== 4) {
+    return;
+  } else {
+    if (request2.status >= 200 && request2.status <= 299) {
+      const response = request2;
+      const objectResponse = JSON.parse(response.responseText);
+      console.log(objectResponse);
+      printPhotos(objectResponse);
+    } else {
+      console.log("No se pudo ejecutar");
+    }
+  }
 });
-listaObjetoID.innerHTML = listKodersObj;
-//Llenado dinamico de SortNombre
-let listaObjetoNombre = document.querySelector(".table-SortNombre tbody");
+request2.send();
 
-let listKodersObj2 = "";
-SortNombre.forEach((elemento) => {
-  listKodersObj2 += `
-          <tr>
-            <th scope="row">${elemento.iditem}</th>
-            <td class="Nombre">${elemento.name}</td>
-            <td class="Descripcion">${elemento.description}</td>
-            <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
-          </tr>
-    `;
-});
-listaObjetoNombre.innerHTML = listKodersObj2;
-//Llenado dinamico de SortPrecio
-let listaObjetoPrecio = document.querySelector(".table-SortPrecio tbody");
+const printPhotos = (arr) => {
+  let acc = "";
+  arr.forEach((photo) => {
+    acc +=
+      // <th scope="row">1</th>
+      `
+    <tr>
+    <td>${photo.albumId}</td>
+    <td>${photo.id}</td>
+    <td>${photo.title}</td>
+    <td><a href="${photo.url}" class="pr-4">Ver photo</a></td>
+    <td><a href="${photo.thumbnailUrl}" class="pr-4">Ver thumbnail</a></td>
+    <a href="/photo.html?idphoto=${photo.id}" class="pr-4">Ver foto unica</a>
+  </tr>
 
-let listKodersObj3 = "";
-SortPrecio.forEach((elemento) => {
-  listKodersObj3 += `
-          <tr>
-            <th scope="row">${elemento.iditem}</th>
-            <td class="Nombre">${elemento.name}</td>
-            <td class="Descripcion">${elemento.description}</td>
-            <td class="Precio">${elemento.price}</td>
-            <td class="ImgUrl"><img class ="imgAmazon" src=" ${elemento.imgurl} " </img></td>
-          </tr>
-    `;
-});
-listaObjetoPrecio.innerHTML = listKodersObj3;
+        `;
+  });
+  let list__JSON2 = document.querySelector(".list__JSON2");
+  list__JSON2.innerHTML = acc;
+};
+
+//URL dinamica
+const printComment = () => {};
+
+if (window.location.pathname === "/comment.html") {
+  let search = window.location.search;
+  let start = search.indexOf("=") + 1;
+  let idComment = parseInt(search.slice(start));
+
+  const request = new XMLHttpRequest();
+  request.open(
+    "GET",
+    `https://jsonplaceholder.typicode.com/comments/${idComment}`
+  );
+  request.addEventListener("readystatechange", () => {
+    if (request.readyState !== 4) {
+      return;
+    } else {
+      if (request.status >= 200 && request.status <= 299) {
+        const response = request;
+        const objectResponse = JSON.parse(response.responseText);
+        //console.log(objectResponse);
+        let { postId, id, name, email, body } = objectResponse;
+        document.querySelector(".card-title").innerText = `${id} : ${name}`;
+        document.querySelector(".card-text").innerText = body;
+        document.querySelector(".btn-primary").innerText = email;
+        document
+          .querySelector(".btn-primary")
+          .setAttribute("href", `https://outlook.live.com/owa/`);
+        document.querySelector(".btn-primary").setAttribute("target", "_blank");
+      } else {
+        console.log("No se pudo ejecutar");
+      }
+    }
+  });
+  request.send();
+
+  // if (objectResponse !== undefined) {
+  //   printComment();
+  // }
+}
+
+//URL dinamico Photo
+const printPhoto = () => {};
+
+if (window.location.pathname === "/photo.html") {
+  let search = window.location.search;
+  let start = search.indexOf("=") + 1;
+  let idPhoto = parseInt(search.slice(start));
+
+  const request = new XMLHttpRequest();
+  request.open("GET", `https://jsonplaceholder.typicode.com/photos/${idPhoto}`);
+  request.addEventListener("readystatechange", () => {
+    if (request.readyState !== 4) {
+      return;
+    } else {
+      if (request.status >= 200 && request.status <= 299) {
+        const response = request;
+        const objectResponse = JSON.parse(response.responseText);
+        let { albumId, id, title, url, thumbnailUrl } = objectResponse;
+        console.log(id, title, url, thumbnailUrl);
+        document.querySelector(".card-title").innerText = `${id} : ${title}`;
+        document.querySelector(".url").innerText = `Estas es la url: ${url}`;
+        document.querySelector(
+          ".btn-primary"
+        ).innerText = `Este es el thumnailUrl: ${thumbnailUrl}`;
+        document
+          .querySelector(".btn-primary")
+          .setAttribute("href", `https://outlook.live.com/owa/`);
+        document.querySelector(".btn-primary").setAttribute("target", "_blank");
+      } else {
+        console.log("No se pudo ejecutar");
+      }
+    }
+  });
+  request.send();
+
+  // if (objectResponse !== undefined) {
+  //   printPhoto();
+  // }
+}

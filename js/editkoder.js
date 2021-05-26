@@ -32,6 +32,7 @@ const printKoderFetch = () => {
 };
 
 printKoderFetch();
+
 //Editar Valores
 btnEdit = document.getElementById("btn__edit--koder");
 btnEdit.addEventListener("click", () => {
@@ -58,11 +59,11 @@ btnEdit.addEventListener("click", () => {
     age: inputage,
     position: inputposition,
   };
-
+  console.log("Valores a enviar:", UserObject);
   // fetch(url, options*)
 
   fetch(
-    "https://python-2g-default-rtdb.firebaseio.com/Koders/${idKoder}.json",
+    `https://python-2g-default-rtdb.firebaseio.com/Koders/${idkoder}.json`,
     {
       method: "PUT",
       headers: {
@@ -76,5 +77,6 @@ btnEdit.addEventListener("click", () => {
     })
     .then((response) => {
       console.log(response);
+      printKoderFetch();
     });
 });
